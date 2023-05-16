@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">testZapustisy</string>
+    <string name="nameGameTXT">BlastBall</string>
+    <string name="playGameTXT">PLAY</string>
+    <string name="sattingsGameTXT">SATTINGS</string>
+    <string name="resultGameTXT">RESULT</string>
+    <!--GameScene-->
+    <string name = "stateReadyTXT">CLICK TO START</string>
+    <!--Panel-->
+    <string name="panel_distance">Distance: </string>
+    <string name="panel_money">Money: </string>
+    <string name="panel_health">Health: </string>
+</resources>
