@@ -12,8 +12,7 @@ public abstract class SpriteFW {
     protected double speed;
 
     protected Rect hitBox;
-    protected double radiusX;
-    protected double radiusY;
+    protected double radius;
 
     public int getMaxScreenX() {
         return maxScreenX;
@@ -79,11 +78,7 @@ public abstract class SpriteFW {
         this.hitBox = hitBox;
     }
 
-    public double getRadiusX() {
-        return radiusX;
-    }
-
-    public double getRadiusY() {
-        return radiusY;
+    public double getRadius() {
+        return radius;
     }
 }

@@ -6,7 +6,7 @@ import com.example.my_framework.GraphicsFW;
 import com.example.my_framework.RandomchikFW;
 import com.example.my_framework.SpriteFW;
 import com.example.my_framework.UtilResoursHelper;
-import com.example.projectstoproc.louders.Animation;
+import com.example.projectstoproc.Animation;
 
 public class Enemy extends SpriteFW {
 
@@ -15,26 +15,25 @@ public class Enemy extends SpriteFW {
     public Enemy(int maxScreenX, int maxScreenY, int minScreenY, int enemyType){
 
         this.maxScreenX = maxScreenX;
-        this.maxScreenY = maxScreenY - UtilResoursHelper.spriteEnemyRocket.get(0).getHeight()- minScreenY;
+        this.maxScreenY = maxScreenY - UtilResoursHelper.spriteEnemyRocket.get(0).getHeight();
         this.minScreenX = 0;
         this.minScreenY = minScreenY;
 
-        radiusX = UtilResoursHelper.spriteEnemyRocket.get(0).getWidth()/3;
-        radiusY = UtilResoursHelper.spriteEnemyRocket.get(0).getHeight()/4;
+        radius = UtilResoursHelper.spriteEnemyRocket.get(0).getWidth()/4;
 
         x = maxScreenX;
-        y = RandomchikFW.getRandom(minScreenY, maxScreenY-20);
+        y = RandomchikFW.getRandom(minScreenY, maxScreenY- 50);
 
         switch (enemyType){
             case 1:
-                speed = RandomchikFW.getRandom(4, 10);
+                speed = RandomchikFW.getRandom(5, 11);
                 animationEnemyRocet = new Animation(1, UtilResoursHelper.spriteEnemyRocket.get(0),
                         UtilResoursHelper.spriteEnemyRocket.get(1),
                         UtilResoursHelper.spriteEnemyRocket.get(2),
                         UtilResoursHelper.spriteEnemyRocket.get(3));
                 break;
             case 2:
-                speed = RandomchikFW.getRandom(20, 30);
+                speed = 20;
                 break;
         }
 
@@ -44,7 +43,7 @@ public class Enemy extends SpriteFW {
 
         if(x<minScreenX){
             x=maxScreenX;
-            y = RandomchikFW.getRandom(minScreenY, maxScreenY-20);
+            y = RandomchikFW.getRandom(minScreenY, maxScreenY-50);
             speed = RandomchikFW.getRandom(4, 10);
         }
         animationEnemyRocet.runAnimation();

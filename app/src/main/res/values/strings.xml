@@ -1,13 +1,28 @@
 <resources>
     <string name="app_name">testZapustisy</string>
-    <string name="nameGameTXT">BlastBall</string>
+    <string name="nameGameTXT">JackPack</string>
     <string name="playGameTXT">PLAY</string>
-    <string name="sattingsGameTXT">SATTINGS</string>
+    <string name="shopGameTXT">SHOP</string>
     <string name="resultGameTXT">RESULT</string>
+
     <!--GameScene-->
     <string name = "stateReadyTXT">CLICK TO START</string>
+    <string name = "statePauseTXT">PAUSE</string>
+
+    <!--ShopeScene-->
+    <string name="shopeBalance">Balance: </string>
+
     <!--Panel-->
-    <string name="panel_distance">Distance: </string>
-    <string name="panel_money">Money: </string>
-    <string name="panel_health">Health: </string>
+    <string name="panel_distance">Distance:</string>
+    <string name="panel_money">Money:</string>
+    <string name="panel_health">Health:</string>
+
+    <!--ResultScene-->
+    <string name="theBestResult">Your best distance:</string>
+
+    <!--Game Over-->
+    <string name="gameOver">Game Over!</string>
+    <string name="gameOver_restartGame">Play again</string>
+    <string name="gameOver_exitInMainMenu">Back to menu</string>
+    <string name="gameOver_distance">Your distance:</string>
 </resources>

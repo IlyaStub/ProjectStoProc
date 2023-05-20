@@ -51,7 +51,7 @@ public class TouchListenerFW implements View.OnTouchListener {
     //проверка, куда нажал пользователь
     public boolean getTouchUp(float x, float y, float touchWidth, float touchHeight){
         if(isTouchUp){
-            if(touchX>=x && touchX<=x+touchWidth-1 && touchY<=y && touchY>=y-(touchHeight-1)){
+            if(touchX>=x && touchX<=x+touchWidth && touchY<y && touchY>y-(touchHeight)){
                 isTouchUp = false;
                 return true;
             }
@@ -61,7 +61,7 @@ public class TouchListenerFW implements View.OnTouchListener {
 
     public boolean getTouchDown(int x, int y, int touchWidth, int touchHeight){
         if(isTouchDown){
-            if(touchX>=x && touchX<=x+touchWidth-1 && touchY<=y && touchY>=y-(touchHeight-1)){
+            if(touchX>=x && touchX<=x+touchWidth && touchY<=y && touchY>=y-(touchHeight)){
                 isTouchDown = false;
                 return true;
             }

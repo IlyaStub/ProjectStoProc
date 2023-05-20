@@ -20,6 +20,8 @@ public class UtilResoursHelper {
     public static ArrayList<Bitmap> spritePlayerDeath;
     public static Bitmap spritePlayerDeathDown;
 
+    public static ArrayList<Bitmap> spriteCoin;
+
     public static ArrayList<Bitmap> spriteEnemyRocket;
 
 

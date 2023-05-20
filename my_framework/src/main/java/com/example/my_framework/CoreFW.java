@@ -1,5 +1,6 @@
 package com.example.my_framework;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -28,11 +29,24 @@ public class CoreFW extends AppCompatActivity {
     private boolean stateOnPause;
     private boolean stateOnResume;
 
+    private SharedPreferences sharedPreferences;//сохраниние и считывания
+
+    public SharedPreferences getSharedPreferences() {
+        return sharedPreferences;
+    }
+
+    private final String RESULT = "result";
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//нельзя переходить в спящи режим
+
+        sharedPreferences = getSharedPreferences(RESULT, MODE_PRIVATE);//создает фаил в папке, к которой доступ может получить только приложение
 
         sizeDisplay = new Point();
         display = getWindowManager().getDefaultDisplay();

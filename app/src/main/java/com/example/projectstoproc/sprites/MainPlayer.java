@@ -8,7 +8,7 @@ import com.example.my_framework.SpriteFW;
 import com.example.my_framework.TimerFW;
 import com.example.my_framework.UtilResoursHelper;
 import com.example.projectstoproc.GameManager;
-import com.example.projectstoproc.louders.Animation;
+import com.example.projectstoproc.Animation;
 
 public class MainPlayer extends SpriteFW {
 
@@ -27,6 +27,7 @@ public class MainPlayer extends SpriteFW {
     private boolean death;
 
     private int health;
+    private int balance;
     public boolean hitBool;//переменная для того, чтобы знать, какая будет анимация
     boolean touchOrNot;//переменная для того, чтобы знать, какая будет анимация
 
@@ -39,9 +40,9 @@ public class MainPlayer extends SpriteFW {
         touchOrNot = false;
         death = false;
         health = 3;
+        balance = 0;
 
-        radiusX = UtilResoursHelper.spritePlayer.getWidth()/3;
-        radiusY = UtilResoursHelper.spritePlayer.getHeight()/3-6;
+        radius = UtilResoursHelper.spritePlayerIfTouch.get(0).getWidth()/10;
 
         timerTextureDamage = new TimerFW();
         timerGameOver = new TimerFW();
@@ -72,7 +73,7 @@ public class MainPlayer extends SpriteFW {
     public void update(){
 
         if(!death){
-            if(coreFW.getTouchListenerFW().getTouchDown(0, maxScreenY, maxScreenX, maxScreenY)){
+            if(coreFW.getTouchListenerFW().getTouchDown(0, maxScreenY, maxScreenX, maxScreenY-45)){
                 startTouching();
             }
             if(coreFW.getTouchListenerFW().getTouchUp(0, maxScreenY, maxScreenX, maxScreenY)){
@@ -171,9 +172,15 @@ public class MainPlayer extends SpriteFW {
         return health;
     }
 
+    public int getBalance(){
+        return balance;
+    }
+
 
     public void hitEnemy() {
-        health--;
+        if(!death){
+            health--;
+        }
         if(health==0){
             death=true;
             timerGameOver.startTime();
@@ -182,5 +189,10 @@ public class MainPlayer extends SpriteFW {
         timerTextureDamage.startTime();
     }
 
+    public void hitCoin() {
+        if(!death){
+            balance++;
+        }
+    }
 }
 

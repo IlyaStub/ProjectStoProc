@@ -3,6 +3,7 @@ package com.example.projectstoproc;
 import com.example.my_framework.ColisionFW;
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.GraphicsFW;
+import com.example.projectstoproc.generodtor.GeneratorCoin;
 import com.example.projectstoproc.generodtor.GeneratorEnemy;
 import com.example.projectstoproc.sprites.MainPlayer;
 
@@ -23,6 +24,7 @@ public class GameManager {
     public static boolean gameOver;
 
     GeneratorEnemy generatorEnemy;
+    GeneratorCoin generatorCoin;
     Panel panel;
 
     public GameManager(CoreFW coreFW, int sceneWidth, int sceneHeight){
@@ -34,6 +36,7 @@ public class GameManager {
         backgroundClass = new BackgroundClass(sceneWidth, sceneHeight);
         mainPlayer = new MainPlayer(coreFW, maxSreenX, maxSreenY, minSreenY);
         generatorEnemy = new GeneratorEnemy(sceneWidth, sceneHeight, minSreenY);
+        generatorCoin = new GeneratorCoin(sceneWidth, sceneHeight, minSreenY);
         gameOver = false;
 
     }
@@ -50,24 +53,45 @@ public class GameManager {
         backgroundClass.update();
         mainPlayer.update();
         generatorEnemy.update();
+        generatorCoin.update();
 
         zadergka++;
-        if(zadergka>50){
+        if(zadergka>50 && health>0){
             zadergka =0;
             distance+=2;//пока 2, потом появятся усилялки
-            money+=1;
         }
         health = mainPlayer.getHealth();
+        money = mainPlayer.getBalance();
 
         panel.update(distance,money, health);
 
-        //проверяем у каждого enemy колисию с плеером
+        //проверяем у каждого enemy колизию с плеером
         for (int i = 0; i < generatorEnemy.enemyArrayList.size(); i++) {
             if(ColisionFW.colisionDt(mainPlayer, generatorEnemy.enemyArrayList.get(i))){
                 mainPlayer.hitEnemy();
                 generatorEnemy.hitPlayer(generatorEnemy.enemyArrayList.get(i));
             }
         }
+
+
+        //проверяем у каждого coin колизию с плеером
+        for (int i = 0; i < generatorCoin.coinArrayList.size(); i++) {
+            if(ColisionFW.colisionDt(mainPlayer, generatorCoin.coinArrayList.get(i))){
+                mainPlayer.hitCoin();
+                generatorCoin.hitPlayer(generatorCoin.coinArrayList.get(i));
+            }
+        }
+    }
+
+    public int getDistance(){
+        return distance;
+    }
+    public int getMoney(){
+        return money;
+    }
+
+    public int getHealth(){
+        return health;
     }
 
     public void upBackground(){
@@ -82,6 +106,7 @@ public class GameManager {
         backgroundClass.drawing(graphicsFW);
         mainPlayer.drawing(graphicsFW);
         generatorEnemy.drawing(graphicsFW);
+        generatorCoin.drawing(graphicsFW);
         panel.drawing(graphicsFW);
     }
 }

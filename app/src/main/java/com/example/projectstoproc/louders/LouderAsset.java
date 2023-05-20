@@ -5,16 +5,26 @@ import android.graphics.Bitmap;
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.GraphicsFW;
 import com.example.my_framework.UtilResoursHelper;
+import com.example.projectstoproc.ResultGame;
 
 import java.util.ArrayList;
 
 //загрузчик картинок
 public class LouderAsset {
+    CoreFW coreFW;
     public LouderAsset(CoreFW coreFW, GraphicsFW graphicsFW){
         loadTexture(graphicsFW);//подгрузка текстуры
         loadSpritePlayer(graphicsFW);
         loadBackGround(graphicsFW);
         loadSpriteEnemy(graphicsFW);
+        loadSpriteCoins(graphicsFW);
+    }
+
+    private void loadSpriteCoins(GraphicsFW graphicsFW) {
+        UtilResoursHelper.spriteCoin = new ArrayList<>();
+        UtilResoursHelper.spriteCoin.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 511, 0, 26, 26));
+        UtilResoursHelper.spriteCoin.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 541, 0, 26, 26));
+        UtilResoursHelper.spriteCoin.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 566, 0, 26, 26));
     }
 
     private void loadSpriteEnemy(GraphicsFW graphicsFW) {
@@ -29,35 +39,36 @@ public class LouderAsset {
     private void loadBackGround(GraphicsFW graphicsFW) {
         UtilResoursHelper.textureBackground = new ArrayList<>();
         UtilResoursHelper.textureBackground.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 0, 162, 890, 600));
+        UtilResoursHelper.textureBackground.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 1034, 162, 800, 600));
     }
 
     private void loadSpritePlayer(GraphicsFW graphicsFW) {
         //добавляем картинки в эрей лист, для анимации
         //анимация, когда нажат
         UtilResoursHelper.spritePlayerIfTouch = new ArrayList<>();
-        UtilResoursHelper.spritePlayerIfTouch.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 0, 82, 80, 68));
-        UtilResoursHelper.spritePlayerIfTouch.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 87, 82, 80, 68));
-        UtilResoursHelper.spritePlayerIfTouch.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 172, 82, 80, 68));
-        UtilResoursHelper.spritePlayerIfTouch.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 255, 82, 80, 68));
+        UtilResoursHelper.spritePlayerIfTouch.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 3, 86, 64, 64));
+        UtilResoursHelper.spritePlayerIfTouch.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 95, 85, 64, 64));
+        UtilResoursHelper.spritePlayerIfTouch.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 173, 86, 64, 64));
+        UtilResoursHelper.spritePlayerIfTouch.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 257, 86, 64, 64));
 
         //картинка, когда отжата
-        UtilResoursHelper.spritePlayer = graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 0, 3, 66, 70);
+        UtilResoursHelper.spritePlayer = graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 10, 7, 64, 64);
 
         //анимация, когда на полу
         UtilResoursHelper.spritePlayerDown = new ArrayList<>();
-        UtilResoursHelper.spritePlayerDown.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 356, 82, 58, 68));
-        UtilResoursHelper.spritePlayerDown.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 421, 82, 58, 68));
-        UtilResoursHelper.spritePlayerDown.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 356, 82, 58, 68));
-        UtilResoursHelper.spritePlayerDown.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 483, 82, 58, 68));
+        UtilResoursHelper.spritePlayerDown.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 343, 85, 64, 64));
+        UtilResoursHelper.spritePlayerDown.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 415, 85, 64, 64));
+        UtilResoursHelper.spritePlayerDown.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 343, 85, 64, 64));
+        UtilResoursHelper.spritePlayerDown.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 483, 82, 64, 64));
 
         //картинка получения урона в полете при нажатой
-        UtilResoursHelper.spritePlayerDamageIfTouch = graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 642, 82, 80, 68);
+        UtilResoursHelper.spritePlayerDamageIfTouch = graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 650, 84, 64, 64);
 
         //картинка получения урона в полете не нажата
-        UtilResoursHelper.spritePlayerDamage = graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 734, 82, 66, 70);
+        UtilResoursHelper.spritePlayerDamage = graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 736, 84, 64, 64);
 
-        //картинка получения урона в полете не нажата
-        UtilResoursHelper.spritePlayerDamageDown = graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 568, 82, 66, 70);
+        //картинка получения урона на полу не нажата
+        UtilResoursHelper.spritePlayerDamageDown = graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 568, 84, 64, 64);
 
         //смерть игрока
         UtilResoursHelper.spritePlayerDeath = new ArrayList<>();
@@ -72,5 +83,7 @@ public class LouderAsset {
 
     private void loadTexture(GraphicsFW graphicsFW) {
         UtilResoursHelper.textureAtlas = graphicsFW.newTexture("texture_atlasSecond.png");
+
+        /*ResultGame.loadDistance(coreFW);*/
     }
 }

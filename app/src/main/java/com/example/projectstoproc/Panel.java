@@ -27,9 +27,9 @@ public class Panel {
 
     public void drawing(GraphicsFW graphicsFW){
         graphicsFW.drawLine(0, HEIGHT_PANEL, graphicsFW.getWidthFrameBuffer(), HEIGHT_PANEL, Color.BLUE);
-        graphicsFW.drawText(coreFW.getString(R.string.panel_distance) + distance, 10, 30, Color.BLACK, 25, null);
-        graphicsFW.drawText(coreFW.getString(R.string.panel_money) + money, graphicsFW.getWidthFrameBuffer()/2-80, 30, Color.BLACK, 25, null);
-        graphicsFW.drawText(coreFW.getString(R.string.panel_health) + health, graphicsFW.getWidthFrameBuffer()-110, 30, Color.BLACK, 25, null);
+        graphicsFW.drawText(coreFW.getString(R.string.panel_distance) +" "+ distance, 10, 30, Color.BLACK, 25, null);
+        graphicsFW.drawText(coreFW.getString(R.string.panel_money) +" "+ money, graphicsFW.getWidthFrameBuffer()/2-55, 30, Color.BLACK, 25, null);
+        graphicsFW.drawText(coreFW.getString(R.string.panel_health) +" "+ health, graphicsFW.getWidthFrameBuffer()-115, 30, Color.BLACK, 25, null);
     }
 
     public int getHEIGHT_PANEL() {

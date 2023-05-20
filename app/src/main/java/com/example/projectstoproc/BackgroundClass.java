@@ -3,7 +3,6 @@ package com.example.projectstoproc;
 import com.example.my_framework.GraphicsFW;
 import com.example.my_framework.SpriteFW;
 import com.example.my_framework.UtilResoursHelper;
-import com.example.projectstoproc.louders.Animation;
 
 public class BackgroundClass extends SpriteFW {
 
@@ -15,8 +14,7 @@ public class BackgroundClass extends SpriteFW {
         this.maxScreenX = sceneWidth;
         this.maxScreenY = sceneHight;
 
-        animBackground = new Animation(0, UtilResoursHelper.textureBackground.get(0));
-
+        animBackground = new Animation(100, UtilResoursHelper.textureBackground.get(0));
     }
 
     public void update(){

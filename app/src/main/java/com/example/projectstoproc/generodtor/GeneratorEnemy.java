@@ -1,6 +1,7 @@
 package com.example.projectstoproc.generodtor;
 
 import com.example.my_framework.GraphicsFW;
+import com.example.my_framework.UtilResoursHelper;
 import com.example.projectstoproc.sprites.Enemy;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class GeneratorEnemy {
 
     public GeneratorEnemy(int sceneWidth, int sceneHeight, int minScreenY){
         this.maxScreenX = sceneWidth;
-        this.maxScreenY = sceneHeight;
+        this.maxScreenY = sceneHeight - UtilResoursHelper.spriteEnemyRocket.get(0).getHeight();
         this.minScreenY = minScreenY;
         this.minScreenX = 0;
 
