@@ -7,6 +7,8 @@ import com.example.my_framework.CoreFW;
 import com.example.my_framework.SceneFW;
 import com.example.projectstoproc.GameManager;
 import com.example.projectstoproc.R;
+import com.example.projectstoproc.ResultGame;
+import com.example.projectstoproc.sprites.MainPlayer;
 
 public class GameScene extends SceneFW {
 
@@ -17,6 +19,8 @@ public class GameScene extends SceneFW {
 
     GameState gameState;
     GameManager gameManager;
+
+    boolean flag = true;
 
     public GameScene(CoreFW coreFW) {
         super(coreFW);
@@ -71,6 +75,7 @@ public class GameScene extends SceneFW {
 
     }
     private void updateStateReady() {
+        flag = true;
         if(coreFW.getTouchListenerFW().getTouchUp(0, sceneHeight, sceneWidth, sceneHeight)){
             gameState = GameState.RUNNING;
         }
@@ -81,29 +86,67 @@ public class GameScene extends SceneFW {
         gameManager.drawing(coreFW, graphicsFW);
     }
     private void updateStateRunning() {
+        flag = true;
+        if(coreFW.getTouchListenerFW().getTouchUp(0, 45, sceneWidth, 45)){
+            gameState = GameState.PAUSE;
+        }
+
         gameManager.update();
+
         if(GameManager.gameOver){
             gameState = GameState.GAMEOVER;
         }
+
 
     }
 
     //методы конца игры
     private void drawingStateGameOver() {
-        graphicsFW.clearScene(Color.BLACK);
-        graphicsFW.drawText("Game Over", sceneWidth/2-130, sceneHeight/2, Color.BLUE, 40, null);
-
+        gameManager.drawBackGround(graphicsFW);
+        graphicsFW.drawText(coreFW.getString(R.string.gameOver), 250, 290, Color.BLUE, 70, null);
+        graphicsFW.drawText(coreFW.getString(R.string.gameOver_distance) + gameManager.getDistance(), 250, 360, Color.BLUE, 40, null);
+        graphicsFW.drawText(coreFW.getString(R.string.gameOver_restartGame), 250, 420, Color.BLUE, 40, null);
+        graphicsFW.drawText(coreFW.getString(R.string.gameOver_exitInMainMenu), 250, 480, Color.BLUE, 40, null);
     }
     private void updateStateGameOver() {
+
+        ResultGame.addNewBestDistance(gameManager.getDistance(), coreFW);
+
+        if(flag){
+            ResultGame.popolnityBalance(gameManager.getMoney(), coreFW);
+            flag = false;
+        }
+
+        if(coreFW.getTouchListenerFW().getTouchUp(250, 372, 185, 32)){
+            try {
+                coreFW.setScene(new GameScene(coreFW));
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        if(coreFW.getTouchListenerFW().getTouchUp(250, 422, 242, 30)){
+            try {
+                coreFW.setScene(new MainMenuScene(coreFW));
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
 
     }
 
     // методы паузы
     private void drawingStatePause() {
-
+        coreFW.getGraphicsFW().drawText(coreFW.getString(R.string.statePauseTXT), sceneWidth/2-60,sceneHeight/2-40, Color.GREEN,50,null);
+        coreFW.getGraphicsFW().drawText(coreFW.getString(R.string.panel_distance) + gameManager.getDistance(), sceneWidth/2-110,sceneHeight/2+30, Color.GREEN,50,null);
+        coreFW.getGraphicsFW().drawText(coreFW.getString(R.string.panel_money) + gameManager.getMoney(), sceneWidth/2-80,sceneHeight/2+90, Color.GREEN,50,null);
+        coreFW.getGraphicsFW().drawText(coreFW.getString(R.string.panel_health) + gameManager.getHealth(), sceneWidth/2-80,sceneHeight/2+150, Color.GREEN,50,null);
     }
     private void updateStatePause() {
-
+        if (coreFW.getTouchListenerFW().getTouchUp(0, sceneHeight, sceneWidth, sceneHeight)) {
+            gameState = GameState.RUNNING;
+        }
     }
 
     @Override
@@ -118,6 +161,5 @@ public class GameScene extends SceneFW {
 
     @Override
     public void dispose() {
-
     }
 }
