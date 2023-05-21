@@ -37,4 +37,9 @@ public class ResultGame {
         balance+=balanceNow;
         saveDistance(coreFW);
     }
+
+    public static void snyatyBalance(int price, CoreFW coreFW){
+        balance-=price;
+        saveDistance(coreFW);
+    }
 }

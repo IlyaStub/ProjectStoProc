@@ -158,7 +158,7 @@ public class MainPlayer extends SpriteFW {
         }else {
             if(y==maxScreenY){
                 graphicsFW.drawTexture(UtilResoursHelper.spritePlayerDeathDown, x, y);
-                if(timerGameOver.timerDelay(2)){
+                if(timerGameOver.timerDelay(1)){
                     GameManager.gameOver = true;
                 }
             }else{
@@ -178,9 +178,7 @@ public class MainPlayer extends SpriteFW {
 
 
     public void hitEnemy() {
-        if(!death){
-            health--;
-        }
+        health--;
         if(health==0){
             death=true;
             timerGameOver.startTime();
@@ -190,9 +188,7 @@ public class MainPlayer extends SpriteFW {
     }
 
     public void hitCoin() {
-        if(!death){
-            balance++;
-        }
+        balance++;
     }
 }
 

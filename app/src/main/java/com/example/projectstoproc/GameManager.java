@@ -3,6 +3,7 @@ package com.example.projectstoproc;
 import com.example.my_framework.ColisionFW;
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.GraphicsFW;
+import com.example.my_framework.UtilResoursHelper;
 import com.example.projectstoproc.generodtor.GeneratorCoin;
 import com.example.projectstoproc.generodtor.GeneratorEnemy;
 import com.example.projectstoproc.sprites.MainPlayer;
@@ -65,20 +66,23 @@ public class GameManager {
 
         panel.update(distance,money, health);
 
-        //проверяем у каждого enemy колизию с плеером
-        for (int i = 0; i < generatorEnemy.enemyArrayList.size(); i++) {
-            if(ColisionFW.colisionDt(mainPlayer, generatorEnemy.enemyArrayList.get(i))){
-                mainPlayer.hitEnemy();
-                generatorEnemy.hitPlayer(generatorEnemy.enemyArrayList.get(i));
+
+        if(health>0){
+            //проверяем у каждого enemy колизию с плеером
+            for (int i = 0; i < generatorEnemy.enemyArrayList.size(); i++) {
+                if(ColisionFW.colisionDt(mainPlayer, generatorEnemy.enemyArrayList.get(i))){
+                    UtilResoursHelper.soundKrick.playSound(1);
+                    mainPlayer.hitEnemy();
+                    generatorEnemy.hitPlayer(generatorEnemy.enemyArrayList.get(i));
+                }
             }
-        }
-
-
-        //проверяем у каждого coin колизию с плеером
-        for (int i = 0; i < generatorCoin.coinArrayList.size(); i++) {
-            if(ColisionFW.colisionDt(mainPlayer, generatorCoin.coinArrayList.get(i))){
-                mainPlayer.hitCoin();
-                generatorCoin.hitPlayer(generatorCoin.coinArrayList.get(i));
+            //проверяем у каждого coin колизию с плеером
+            for (int i = 0; i < generatorCoin.coinArrayList.size(); i++) {
+                if(ColisionFW.colisionDt(mainPlayer, generatorCoin.coinArrayList.get(i))){
+                    mainPlayer.hitCoin();
+                    UtilResoursHelper.soundMoney.playSound(1);
+                    generatorCoin.hitPlayer(generatorCoin.coinArrayList.get(i));
+                }
             }
         }
     }

@@ -15,7 +15,7 @@ public class CoreFW extends AppCompatActivity {
     private final float FRAME_BUFFER_WIDTH = 800;
     private final float FRAME_BUFFER_HIGHT = 600;
 
-    private LoopFW loopFW;
+    private СyclуFW loopFW;
     private GraphicsFW graphicsFW;
     private TouchListenerFW touchListenerFW;
 
@@ -25,6 +25,8 @@ public class CoreFW extends AppCompatActivity {
     private SceneFW sceneFW;
     private float sceneWidth;
     private float sceneHeight;
+
+    private AudioFW audioFW;
 
     private boolean stateOnPause;
     private boolean stateOnResume;
@@ -48,6 +50,8 @@ public class CoreFW extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(RESULT, MODE_PRIVATE);//создает фаил в папке, к которой доступ может получить только приложение
 
+        audioFW = new AudioFW(this);
+
         sizeDisplay = new Point();
         display = getWindowManager().getDefaultDisplay();
         display.getSize(sizeDisplay);
@@ -56,7 +60,7 @@ public class CoreFW extends AppCompatActivity {
         sceneWidth = FRAME_BUFFER_WIDTH/sizeDisplay.x; // получаем ширину сцены
         sceneHeight = FRAME_BUFFER_HIGHT/sizeDisplay.y; // получаем высоту сцены
 
-        loopFW = new LoopFW(this, frameBuffer);
+        loopFW = new СyclуFW(this, frameBuffer);
         graphicsFW = new GraphicsFW(getAssets(), frameBuffer);
         touchListenerFW = new TouchListenerFW(loopFW, sceneWidth, sceneHeight);
 
@@ -69,6 +73,10 @@ public class CoreFW extends AppCompatActivity {
 
     public CoreFW(){
 
+    }
+
+    public AudioFW getAudioFW() {
+        return audioFW;
     }
 
     public void onResume(){

@@ -5,6 +5,7 @@ import android.graphics.Color;
 
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.SceneFW;
+import com.example.my_framework.UtilResoursHelper;
 import com.example.projectstoproc.GameManager;
 import com.example.projectstoproc.R;
 import com.example.projectstoproc.ResultGame;
@@ -87,15 +88,18 @@ public class GameScene extends SceneFW {
     }
     private void updateStateRunning() {
         flag = true;
+
         if(coreFW.getTouchListenerFW().getTouchUp(0, 45, sceneWidth, 45)){
+            UtilResoursHelper.soundClick.playSound(1);
             gameState = GameState.PAUSE;
         }
 
         gameManager.update();
 
         if(GameManager.gameOver){
+            UtilResoursHelper.gameMusic.stopMusic();
             gameState = GameState.GAMEOVER;
-        }
+        }else UtilResoursHelper.gameMusic.playMusic(true, 1);
 
 
     }
@@ -118,6 +122,7 @@ public class GameScene extends SceneFW {
         }
 
         if(coreFW.getTouchListenerFW().getTouchUp(250, 372, 185, 32)){
+            UtilResoursHelper.soundClick.playSound(1);
             try {
                 coreFW.setScene(new GameScene(coreFW));
             } catch (IllegalAccessException e) {
@@ -126,6 +131,7 @@ public class GameScene extends SceneFW {
         }
 
         if(coreFW.getTouchListenerFW().getTouchUp(250, 422, 242, 30)){
+            UtilResoursHelper.soundClick.playSound(1);
             try {
                 coreFW.setScene(new MainMenuScene(coreFW));
             } catch (IllegalAccessException e) {
@@ -144,6 +150,7 @@ public class GameScene extends SceneFW {
         coreFW.getGraphicsFW().drawText(coreFW.getString(R.string.panel_health) + gameManager.getHealth(), sceneWidth/2-80,sceneHeight/2+150, Color.GREEN,50,null);
     }
     private void updateStatePause() {
+        UtilResoursHelper.gameMusic.stopMusic();
         if (coreFW.getTouchListenerFW().getTouchUp(0, sceneHeight, sceneWidth, sceneHeight)) {
             gameState = GameState.RUNNING;
         }
@@ -151,15 +158,17 @@ public class GameScene extends SceneFW {
 
     @Override
     public void pause() {
+        UtilResoursHelper.gameMusic.stopMusic();
 
     }
 
     @Override
     public void resume() {
-
+        UtilResoursHelper.gameMusic.playMusic(true, 2);
     }
 
     @Override
     public void dispose() {
+        UtilResoursHelper.gameMusic.stopMusic();
     }
 }

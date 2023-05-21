@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.SceneFW;
+import com.example.my_framework.UtilResoursHelper;
 import com.example.projectstoproc.GameManager;
 import com.example.projectstoproc.R;
 import com.example.projectstoproc.ResultGame;
@@ -22,6 +23,7 @@ public class ShopeScene extends SceneFW {
     @Override
     public void update() {
         if(coreFW.getTouchListenerFW().getTouchUp(10, 43, 240, 44)){
+            UtilResoursHelper.soundClick.playSound(1);
             try {
                 coreFW.setScene(new MainMenuScene(coreFW));
             } catch (IllegalAccessException e) {

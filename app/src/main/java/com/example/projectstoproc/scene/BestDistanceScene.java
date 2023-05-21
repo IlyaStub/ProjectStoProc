@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.SceneFW;
+import com.example.my_framework.UtilResoursHelper;
 import com.example.projectstoproc.GameManager;
 import com.example.projectstoproc.R;
 import com.example.projectstoproc.ResultGame;
@@ -24,6 +25,7 @@ public class BestDistanceScene extends SceneFW {
     @Override
     public void update() {
         if(coreFW.getTouchListenerFW().getTouchUp(0, sceneHeight, sceneWidth, sceneHeight)){
+            UtilResoursHelper.soundClick.playSound(1);
             try {
                 coreFW.setScene(new MainMenuScene(coreFW));
             } catch (IllegalAccessException e) {

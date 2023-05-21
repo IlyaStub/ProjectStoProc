@@ -18,6 +18,14 @@ public class LouderAsset {
         loadBackGround(graphicsFW);
         loadSpriteEnemy(graphicsFW);
         loadSpriteCoins(graphicsFW);
+        loadAudio(coreFW);
+    }
+
+    private void loadAudio(CoreFW coreFW) {
+        UtilResoursHelper.gameMusic = coreFW.getAudioFW().newMusic("gameMusicVersionFirst.mp3");
+        UtilResoursHelper.soundMoney = coreFW.getAudioFW().newSound("soundMoney.ogg");
+        UtilResoursHelper.soundKrick = coreFW.getAudioFW().newSound("soundKric.mp3");
+        UtilResoursHelper.soundClick = coreFW.getAudioFW().newSound("soundClick.ogg");
     }
 
     private void loadSpriteCoins(GraphicsFW graphicsFW) {

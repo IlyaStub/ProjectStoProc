@@ -20,6 +20,12 @@ public class UtilResoursHelper {
     public static ArrayList<Bitmap> spritePlayerDeath;
     public static Bitmap spritePlayerDeathDown;
 
+    public static MusicFW gameMusic;
+
+    public static SoundFW soundMoney;
+    public static SoundFW soundKrick;
+    public static SoundFW soundClick;
+
     public static ArrayList<Bitmap> spriteCoin;
 
     public static ArrayList<Bitmap> spriteEnemyRocket;

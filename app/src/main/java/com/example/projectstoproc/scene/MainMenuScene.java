@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.SceneFW;
+import com.example.my_framework.UtilResoursHelper;
 import com.example.projectstoproc.GameManager;
 import com.example.projectstoproc.R;
 import com.example.projectstoproc.ResultGame;
@@ -22,6 +23,7 @@ public class MainMenuScene extends SceneFW {
     @Override
     public void update() {
         if(coreFW.getTouchListenerFW().getTouchUp(sceneWidth/2f - 59, graphicsFW.getHeightFrameBuffer()/2f-graphicsFW.getHeightFrameBuffer()/17f, 120, graphicsFW.getHeightFrameBuffer()/17f)){
+            UtilResoursHelper.soundClick.playSound(1);
             try {
                 coreFW.setScene(new GameScene(coreFW));
             } catch (IllegalAccessException e) {
@@ -30,6 +32,7 @@ public class MainMenuScene extends SceneFW {
         }
 
         if(coreFW.getTouchListenerFW().getTouchUp(sceneWidth/2 - 86, graphicsFW.getHeightFrameBuffer()/2f+35, 172, 35)){
+            UtilResoursHelper.soundClick.playSound(1);
             try {
                 coreFW.setScene(new BestDistanceScene(coreFW));
             } catch (IllegalAccessException e) {
@@ -38,6 +41,7 @@ public class MainMenuScene extends SceneFW {
         }
 
         if(coreFW.getTouchListenerFW().getTouchUp(sceneWidth/2 - 65, graphicsFW.getHeightFrameBuffer()/2f+105, 130, 36)){
+            UtilResoursHelper.soundClick.playSound(1f);
             try {
                 coreFW.setScene(new ShopeScene(coreFW));
             } catch (IllegalAccessException e) {

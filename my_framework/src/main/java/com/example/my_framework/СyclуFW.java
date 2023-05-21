@@ -8,7 +8,7 @@ import android.view.SurfaceView;
 
 import java.util.Date;
 
-public class LoopFW extends SurfaceView implements Runnable{
+public class СyclуFW extends SurfaceView implements Runnable{
 
     private final float FPS = 35;
     private final float SECOND = 1000000000;
@@ -28,7 +28,7 @@ public class LoopFW extends SurfaceView implements Runnable{
     float drawing = 0;
     long timer = 0;
 
-    public LoopFW(CoreFW coreFW, Bitmap frameBuffer) {
+    public СyclуFW(CoreFW coreFW, Bitmap frameBuffer) {
         super(coreFW);
         this.frameBuffer = frameBuffer;
         this.coreFW = coreFW;
