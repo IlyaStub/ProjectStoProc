@@ -35,7 +35,7 @@ public class GeneratorEnemy {
 
     private void addEnemy(int countEnemy) {
         for (int i = 0; i < countEnemy; i++) {
-            enemyArrayList.add(new Enemy(maxScreenX, maxScreenY, minScreenY, 1));
+            enemyArrayList.add(new Enemy(maxScreenX, maxScreenY, minScreenY));
         }
     }
 

@@ -30,6 +30,7 @@ public class UtilResoursHelper {
     public static ArrayList<Bitmap> spriteCoin;
 
     public static ArrayList<Bitmap> spriteEnemyRocket;
+    public static ArrayList<Bitmap> spriteEnemyRocketSkinchik;
 
     public static Typeface nameFont;
 

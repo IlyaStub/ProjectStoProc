@@ -16,6 +16,8 @@ public class MainMenuScene extends SceneFW {
         super(coreFW);
         ResultGame.loadDistance(coreFW);
         ResultGame.loadBalance(coreFW);
+        ResultGame.loadSkinBuy(coreFW);
+        ResultGame.loadSkin(coreFW);
         gameManager = new GameManager(sceneWidth, sceneHeight);
     }
 

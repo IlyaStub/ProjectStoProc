@@ -12,11 +12,15 @@ import com.game.projectstoproc.ResultGame;
 public class ShopeScene extends SceneFW {
 
     private int balance;
+    private boolean buyOrNotSkin;
+    private boolean hasOrNot;
     GameManager gameManager;
 
     public ShopeScene(CoreFW coreFW) {
         super(coreFW);
         balance = ResultGame.balance;
+        buyOrNotSkin = ResultGame.buySkinOrNot;
+        hasOrNot = ResultGame.hasSkin;
         gameManager = new GameManager(sceneWidth, sceneHeight);
     }
 
@@ -31,6 +35,27 @@ public class ShopeScene extends SceneFW {
             }
         }
 
+
+        if(!buyOrNotSkin){
+            if(coreFW.getTouchListenerFW().getTouchUp(sceneWidth/2-120, sceneHeight/2-32, 300, 25)){
+                UtilResoursHelper.soundClick.playSound(1);
+                if(balance<2){
+
+                }else{
+                    ResultGame.snyatyBalance(2, coreFW);
+                    buyOrNotSkin = true;
+                    balance = ResultGame.balance;
+                }
+            }
+        }else {
+            if(coreFW.getTouchListenerFW().getTouchUp(sceneWidth/2-130, sceneHeight/2-32, 300, 25)){
+                UtilResoursHelper.soundClick.playSound(1);
+                ResultGame.changeSkin(hasOrNot, coreFW);
+                hasOrNot = ResultGame.hasSkin;
+            }
+
+        }
+
     }
 
     @Override
@@ -38,6 +63,14 @@ public class ShopeScene extends SceneFW {
         drawingBackground();
         graphicsFW.drawText(coreFW.getString(R.string.gameOver_exitInMainMenu), 10, 50, Color.BLUE, 40, null);
         graphicsFW.drawText(coreFW.getString(R.string.shopeBalance) + " " + balance, sceneWidth-280, 50, Color.BLUE, 40, null);
+        if(!buyOrNotSkin){
+            graphicsFW.drawText("Buy rocket skin for 50", sceneWidth/2-120, sceneHeight/2, Color.BLUE, 30, null);
+        }else{
+            if(!hasOrNot){
+                graphicsFW.drawText("Install a skin on a rocket", sceneWidth/2-130, sceneHeight/2, Color.BLUE, 30, null);
+            }else graphicsFW.drawText("Install a usually rocket", sceneWidth/2-130, sceneHeight/2, Color.BLUE, 30, null);
+
+        }
     }
 
     private void drawingBackground() {

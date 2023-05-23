@@ -42,6 +42,12 @@ public class LouderAsset {
         UtilResoursHelper.spriteEnemyRocket.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 281, 0, 83, 28));
         UtilResoursHelper.spriteEnemyRocket.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 369, 0, 83, 28));
 
+        //skin
+        UtilResoursHelper.spriteEnemyRocketSkinchik = new ArrayList<>();
+        UtilResoursHelper.spriteEnemyRocketSkinchik.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 105, 40, 83, 28));
+        UtilResoursHelper.spriteEnemyRocketSkinchik.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 193, 40, 83, 28));
+        UtilResoursHelper.spriteEnemyRocketSkinchik.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 281, 40, 83, 28));
+        UtilResoursHelper.spriteEnemyRocketSkinchik.add(graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 369, 40, 83, 28));
     }
 
     private void loadBackGround(GraphicsFW graphicsFW) {
@@ -87,6 +93,7 @@ public class LouderAsset {
 
         //смерть игрока на полу
         UtilResoursHelper.spritePlayerDeathDown = graphicsFW.newSprite(UtilResoursHelper.textureAtlas, 1102, 81, 68, 60);
+
     }
 
     private void loadTexture(GraphicsFW graphicsFW) {
