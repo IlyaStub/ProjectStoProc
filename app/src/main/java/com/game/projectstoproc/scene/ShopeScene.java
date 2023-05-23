@@ -39,10 +39,10 @@ public class ShopeScene extends SceneFW {
         if(!buyOrNotSkin){
             if(coreFW.getTouchListenerFW().getTouchUp(sceneWidth/2-120, sceneHeight/2-32, 300, 25)){
                 UtilResoursHelper.soundClick.playSound(1);
-                if(balance<2){
+                if(balance<50){
 
                 }else{
-                    ResultGame.snyatyBalance(2, coreFW);
+                    ResultGame.snyatyBalance(50, coreFW);
                     buyOrNotSkin = true;
                     balance = ResultGame.balance;
                 }
