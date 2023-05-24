@@ -17,7 +17,7 @@ public class GraphicsFW {
     private Bitmap frameBufferGame; //содержит картинку, которая накладывается на конвас (размер зависит от размера устройства)
     private Canvas canvasGame; //На нем рисовать
     private Paint paintGame;
-    private Bitmap textureGame; // текстура игрока, фона и тд
+    private Bitmap textureGame; //текстура игрока, фона и тд
 
     //конструктор
     public GraphicsFW(AssetManager assetManagerGame, Bitmap frameBufferGame) {

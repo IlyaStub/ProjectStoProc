@@ -23,11 +23,6 @@ public class СyclуFW extends SurfaceView implements Runnable{
     Canvas canvas;
     Rect rect;
 
-    //TEMP
-    float updates = 0;
-    float drawing = 0;
-    long timer = 0;
-
     public СyclуFW(CoreFW coreFW, Bitmap frameBuffer) {
         super(coreFW);
         this.frameBuffer = frameBuffer;
@@ -36,15 +31,12 @@ public class СyclуFW extends SurfaceView implements Runnable{
         rect = new Rect();
         canvas = new Canvas();
     }
-    //TEMP
-
 
     @Override
     public void run() {
 
         float lastTime = System.nanoTime(); // текущие время в наносекундах
         float delta = 0;
-        timer = System.currentTimeMillis();
 
         while (running){
             float nowTime = System.nanoTime();
@@ -56,26 +48,16 @@ public class СyclуFW extends SurfaceView implements Runnable{
                 drowingGame();
                 delta--;
             }
-
-            if(System.currentTimeMillis()-timer>1000){
-                Date date = new Date();
-                System.out.println("UPDATES = " + updates +" DROWING " + drawing + " " +date.toString());
-                updates=0;
-                drawing=0;
-                timer+=1000;
-            }
         }
     }
 
-    //запускается 60 раз в секунду
+    //запускается FPS раз в секунду
     private void updateGame(){
-        updates += 1;
         coreFW.getCurrentScene().update();
     }
 
-    //запускается 60 раз в секунду
+    //запускается FPS раз в секунду
     private void drowingGame(){
-        drawing+= 1;
         if(surfaceHolder.getSurface().isValid()){
             canvas = surfaceHolder.lockCanvas();
             canvas.getClipBounds(rect);

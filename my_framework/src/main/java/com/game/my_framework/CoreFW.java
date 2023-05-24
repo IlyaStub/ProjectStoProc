@@ -118,7 +118,7 @@ public class CoreFW extends AppCompatActivity {
         return sceneFW;
     }
 
-    //
+
     public TouchListenerFW getTouchListenerFW(){
         return touchListenerFW;
     }

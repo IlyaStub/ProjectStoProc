@@ -136,8 +136,6 @@ public class GameScene extends SceneFW {
                 throw new RuntimeException(e);
             }
         }
-
-
     }
 
     // методы паузы

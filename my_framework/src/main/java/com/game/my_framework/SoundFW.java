@@ -6,7 +6,6 @@ public class SoundFW {
     int sound;
     SoundPool soundPool;
 
-
     public SoundFW(int sound, SoundPool soundPool) {
         this.sound = sound;
         this.soundPool = soundPool;
