@@ -7,7 +7,9 @@ public abstract class SpriteFW {
     protected int minScreenX;
     protected int maxScreenY;
     protected int minScreenY;
+
     protected int x;
+
     protected int y;
     protected double speed;
 
@@ -22,12 +24,12 @@ public abstract class SpriteFW {
         this.maxScreenX = maxScreenX;
     }
 
-    public int getMixScreenX() {
+    public int getMinScreenX() {
         return minScreenX;
     }
 
-    public void setMixScreenX(int mixScreenX) {
-        this.minScreenX = mixScreenX;
+    public void setMinScreenX(int minScreenX) {
+        this.minScreenX = minScreenX;
     }
 
     public int getMaxScreenY() {
@@ -38,11 +40,11 @@ public abstract class SpriteFW {
         this.maxScreenY = maxScreenY;
     }
 
-    public int getMixScreenY() {
+    public int getMinScreenY() {
         return minScreenY;
     }
 
-    public void setMixScreenY(int mixScreenY) {
+    public void setMinScreenY(int mixScreenY) {
         this.minScreenY = mixScreenY;
     }
 
@@ -62,13 +64,6 @@ public abstract class SpriteFW {
         this.y = y;
     }
 
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
 
     public Rect getHitBox() {
         return hitBox;

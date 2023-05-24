@@ -57,7 +57,7 @@ public class Enemy extends SpriteFW {
         }else animationEnemyRocetScin.runAnimation();
 
 
-        hitBox = new Rect(x, y, UtilResoursHelper.spriteEnemyRocket.get(0).getWidth(), UtilResoursHelper.spriteEnemyRocket.get(0).getHeight());
+        hitBox = new Rect(getX(), getY(), UtilResoursHelper.spriteEnemyRocket.get(0).getWidth(), UtilResoursHelper.spriteEnemyRocket.get(0).getHeight());
     }
 
 
